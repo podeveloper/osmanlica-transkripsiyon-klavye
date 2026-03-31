@@ -1,3 +1,5 @@
+**🌐 [English](docs/README_EN.md) | [Русский](docs/README_RU.md) | Türkçe**
+
 # Osmanlıca Transkripsiyon Klavye Düzeni
 
 Osmanlı Türkçesi transkripsiyon işaretlerini (ḏ, ā, ḍ, ġ, ḫ, ṣ, ṭ, ẓ, ʾ, ʿ vb.) kolayca yazmak için **Linux** ve **macOS** klavye düzeni.
@@ -69,7 +71,7 @@ Dead key'ler iki adımda çalışır:
 **KDE (Kubuntu):**
 - Sistem Ayarları → Giriş Aygıtları → Klavye → Düzenler → Düzeni Ekle → Variant: Ottoman Transcription
 
-4. Menü çubuğundaki klavye simgesinden (🇹🇷) düzenler arasında geçiş yapabilirsiniz
+4. Menü çubuğundaki klavye simgesinden düzenler arasında geçiş yapabilirsiniz
    - Kısayol: **Super+Space** (GNOME) veya **Meta+Space** (KDE)
 
 Kaldırmak için: `sudo apt remove osmanlica-klavye`
