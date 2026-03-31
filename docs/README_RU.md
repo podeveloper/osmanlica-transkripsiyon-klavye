@@ -95,14 +95,19 @@ macOS может блокировать неподписанные пакеты.
 **Способ 1 — Открыть через контекстное меню:**
 - **Щёлкните правой кнопкой мыши** (или Control+клик) по файлу `.pkg` → **Открыть** → В диалоге предупреждения нажмите **Открыть**
 
-**Способ 2 — Установка через Терминал:**
+**Способ 2 — Скачать и установить через Терминал:**
 ```bash
+# Скачать
+curl -LO https://github.com/podeveloper/osmanlica-transkripsiyon-klavye/releases/latest/download/OsmanlicaTranskripsiyon-1.0.0.pkg
+
 # Снять карантинную метку
-xattr -d com.apple.quarantine ~/Downloads/OsmanlicaTranskripsiyon-1.0.0.pkg
+xattr -d com.apple.quarantine OsmanlicaTranskripsiyon-1.0.0.pkg
 
 # Установить
-sudo installer -pkg ~/Downloads/OsmanlicaTranskripsiyon-1.0.0.pkg -target /
+sudo installer -pkg OsmanlicaTranskripsiyon-1.0.0.pkg -target /
 ```
+
+Не забудьте **выйти из системы и войти снова** после установки.
 
 Оба способа безопасны — файл содержит только раскладку клавиатуры и не изменяет системные файлы.
 

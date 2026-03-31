@@ -95,14 +95,19 @@ macOS may block unsigned packages. Two ways to fix this:
 **Option 1 — Right-click to open:**
 - **Right-click** (or Control-click) the `.pkg` file → **Open** → Click **Open** again on the warning dialog
 
-**Option 2 — Install via Terminal:**
+**Option 2 — Download and install via Terminal:**
 ```bash
+# Download
+curl -LO https://github.com/podeveloper/osmanlica-transkripsiyon-klavye/releases/latest/download/OsmanlicaTranskripsiyon-1.0.0.pkg
+
 # Remove quarantine flag
-xattr -d com.apple.quarantine ~/Downloads/OsmanlicaTranskripsiyon-1.0.0.pkg
+xattr -d com.apple.quarantine OsmanlicaTranskripsiyon-1.0.0.pkg
 
 # Install
-sudo installer -pkg ~/Downloads/OsmanlicaTranskripsiyon-1.0.0.pkg -target /
+sudo installer -pkg OsmanlicaTranskripsiyon-1.0.0.pkg -target /
 ```
+
+Don't forget to **log out and log back in** after installation.
 
 Both methods are safe — the file only contains a keyboard layout and does not modify system files.
 

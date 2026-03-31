@@ -97,14 +97,19 @@ macOS, imzalanmamış paketleri engelleyebilir. Bu durumda iki yol var:
 **Yol 1 — Sağ tık ile açma:**
 - `.pkg` dosyasına **sağ tıklayın** (veya Control tuşuna basılı tutarak tıklayın) → **Aç** → Uyarı çıkınca tekrar **Aç**
 
-**Yol 2 — Terminal ile kurulum:**
+**Yol 2 — Terminal ile indirme ve kurulum:**
 ```bash
+# İndir
+curl -LO https://github.com/podeveloper/osmanlica-transkripsiyon-klavye/releases/latest/download/OsmanlicaTranskripsiyon-1.0.0.pkg
+
 # Karantina işaretini kaldır
-xattr -d com.apple.quarantine ~/Downloads/OsmanlicaTranskripsiyon-1.0.0.pkg
+xattr -d com.apple.quarantine OsmanlicaTranskripsiyon-1.0.0.pkg
 
 # Kur
-sudo installer -pkg ~/Downloads/OsmanlicaTranskripsiyon-1.0.0.pkg -target /
+sudo installer -pkg OsmanlicaTranskripsiyon-1.0.0.pkg -target /
 ```
+
+Kurulumdan sonra **oturumu kapatıp tekrar açmayı unutmayın**.
 
 Her iki yöntem de güvenlidir — dosya sadece bir klavye düzeni içerir, sistem dosyalarına müdahale etmez.
 
