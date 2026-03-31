@@ -60,15 +60,24 @@ Dead key'ler iki adımda çalışır:
 
 ### Linux (Ubuntu / Debian)
 
-**Yol 1 — Terminal ile (tek seferde):**
+**Yol 1 — `apt install` ile kurulum:**
+
+Önce depoyu sisteme ekleyin (bu işlem sadece bir kere yapılır):
 ```bash
 curl -fsSL https://podeveloper.github.io/osmanlica-transkripsiyon-klavye/apt/apt-repo-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/osmanlica-klavye.gpg
 echo "deb [signed-by=/usr/share/keyrings/osmanlica-klavye.gpg] https://podeveloper.github.io/osmanlica-transkripsiyon-klavye/apt stable main" | sudo tee /etc/apt/sources.list.d/osmanlica-klavye.list
+```
+
+Sonra kurun:
+```bash
 sudo apt update
 sudo apt install osmanlica-klavye
 ```
 
-**Yol 2 — .deb dosyası ile:**
+Güncelleme geldiğinde `sudo apt update && sudo apt upgrade` ile güncelleyebilirsiniz.
+
+**Yol 2 — .deb dosyası ile kurulum:**
+
 1. [Releases](https://github.com/podeveloper/osmanlica-transkripsiyon-klavye/releases/latest) sayfasından `.deb` dosyasını indirin
 2. Dosyaya **çift tıklayın** ve "Yükle" butonuna basın
    - Veya terminalde: `sudo dpkg -i osmanlica-klavye_*.deb`

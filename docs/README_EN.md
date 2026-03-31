@@ -58,15 +58,24 @@ Download the installer from [Releases](https://github.com/podeveloper/osmanlica-
 
 ### Linux (Ubuntu / Debian)
 
-**Option 1 — Terminal (one-liner):**
+**Option 1 — Install with `apt install`:**
+
+First, add the repository to your system (this only needs to be done once):
 ```bash
 curl -fsSL https://podeveloper.github.io/osmanlica-transkripsiyon-klavye/apt/apt-repo-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/osmanlica-klavye.gpg
 echo "deb [signed-by=/usr/share/keyrings/osmanlica-klavye.gpg] https://podeveloper.github.io/osmanlica-transkripsiyon-klavye/apt stable main" | sudo tee /etc/apt/sources.list.d/osmanlica-klavye.list
+```
+
+Then install:
+```bash
 sudo apt update
 sudo apt install osmanlica-klavye
 ```
 
+Future updates can be installed with `sudo apt update && sudo apt upgrade`.
+
 **Option 2 — .deb file:**
+
 1. Download the `.deb` file from [Releases](https://github.com/podeveloper/osmanlica-transkripsiyon-klavye/releases/latest)
 2. **Double-click** the file and click "Install"
    - Or via terminal: `sudo dpkg -i osmanlica-klavye_*.deb`
