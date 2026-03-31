@@ -1,0 +1,116 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-deb:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build .deb package
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          PKG_DIR="osmanlica-klavye_${VERSION}"
+
+          mkdir -p "${PKG_DIR}/DEBIAN"
+          mkdir -p "${PKG_DIR}/usr/share/X11/xkb/symbols"
+          mkdir -p "${PKG_DIR}/usr/share/doc/osmanlica-klavye"
+
+          # Control dosyasi
+          sed "s/^Version:.*/Version: ${VERSION}/" packaging/deb/osmanlica-klavye_1.0.0/DEBIAN/control > "${PKG_DIR}/DEBIAN/control"
+
+          # Scriptler
+          cp packaging/deb/osmanlica-klavye_1.0.0/DEBIAN/postinst "${PKG_DIR}/DEBIAN/"
+          cp packaging/deb/osmanlica-klavye_1.0.0/DEBIAN/prerm "${PKG_DIR}/DEBIAN/"
+          chmod 755 "${PKG_DIR}/DEBIAN/postinst" "${PKG_DIR}/DEBIAN/prerm"
+
+          # Dosyalar
+          cp linux/tr_osmanlica "${PKG_DIR}/usr/share/X11/xkb/symbols/tr_osmanlica_snippet"
+          cp linux/XCompose_osmanlica "${PKG_DIR}/usr/share/doc/osmanlica-klavye/"
+          cp LICENSE "${PKG_DIR}/usr/share/doc/osmanlica-klavye/copyright"
+
+          dpkg-deb --build "${PKG_DIR}"
+          mv "${PKG_DIR}.deb" "osmanlica-klavye_${VERSION}_all.deb"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: deb-package
+          path: "*.deb"
+
+  build-pkg:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build .pkg installer
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+
+          mkdir -p build/payload/Library/Keyboard\ Layouts
+          mkdir -p build/scripts
+
+          cp macos/OsmanlicaTranskripsiyon.keylayout "build/payload/Library/Keyboard Layouts/"
+
+          cat > build/scripts/postinstall << 'EOF'
+          #!/bin/bash
+          echo "Osmanlica Transkripsiyon Klavyesi kuruldu!"
+          echo "Sistem Tercihleri > Klavye > Giris Kaynaklari'ndan etkinlestirin."
+          EOF
+          chmod 755 build/scripts/postinstall
+
+          pkgbuild \
+            --root build/payload \
+            --scripts build/scripts \
+            --identifier com.podeveloper.osmanlica-klavye \
+            --version "${VERSION}" \
+            --install-location "/" \
+            "OsmanlicaTranskripsiyon-${VERSION}.pkg"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pkg-installer
+          path: "*.pkg"
+
+  release:
+    needs: [build-deb, build-pkg]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: deb-package
+          path: dist/
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: pkg-installer
+          path: dist/
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Osmanlıca Transkripsiyon Klavyesi ${{ github.ref_name }}"
+          body: |
+            ## Kurulum
+
+            ### Linux (Ubuntu/Debian)
+            `.deb` dosyasını indirip çift tıklayın veya terminalde:
+            ```bash
+            sudo dpkg -i osmanlica-klavye_*.deb
+            ```
+            Ardından: `setxkbmap -layout tr -variant osmanlica`
+
+            ### macOS
+            `.pkg` dosyasını indirip çift tıklayın, kurulum sihirbazını takip edin.
+            Ardından: Sistem Tercihleri > Klavye > Giriş Kaynakları > "Turkish - Ottoman Transcription Q"
+
+            ---
+            Referans: [Talat Öncü - Windows sürümü](https://www.oncu.com/osmtransklavye/)
+          files: dist/*
+          generate_release_notes: true

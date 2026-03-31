@@ -1,0 +1,87 @@
+// Ottoman Turkish Transcription Keyboard Layout for Linux (XKB)
+// Based on Turkish Q layout with AltGr dead keys for transcription marks
+//
+// Reference: Original Windows version by Talat Oncu
+//   https://www.oncu.com/osmtransklavye/
+//
+// Dead Keys (AltGr + tus, sonra harf):
+//   AltGr+Z = alt cizgi (line below)     -> d->ḏ z->ẕ t->ṯ s->s̱
+//   AltGr+X = ust cizgi (macron above)   -> a->ā u->ū i->ī e->ē o->ō
+//   AltGr+C = alt nokta (dot below)      -> d->ḍ z->ẓ k->ḳ h->ḥ t->ṭ s->ṣ
+//   AltGr+V = ust nokta (dot above)      -> g->ġ z->ż
+//   AltGr+B = alt kavis (breve below)    -> h->ḫ
+//
+// Direct Access (AltGr + harf):
+//   AltGr+N = hamza (ʾ)    AltGr+M = ayn (ʿ)
+//   AltGr+D = ḏ   AltGr+G = ġ   AltGr+H = ḫ   AltGr+K = ḳ
+//   AltGr+S = ṣ   AltGr+T = ṭ   AltGr+A = ā   AltGr+U = ū
+//   AltGr+I = ī   AltGr+E = ē   AltGr+O = ō
+
+partial alphanumeric_keys
+xkb_symbols "osmanlica" {
+
+    include "tr(basic)"
+
+    name[Group1]="Turkish (Ottoman Transcription Q)";
+
+    // === Dead key tuslari (AltGr ile) ===
+
+    // AltGr+Z = dead_belowmacron (alt cizgi / line below)
+    key <AB01> { [         z,          Z, dead_belowmacron, dead_belowmacron ] };
+
+    // AltGr+X = dead_macron (ust cizgi / macron above)
+    key <AB02> { [         x,          X,       dead_macron,       dead_macron ] };
+
+    // AltGr+C = dead_belowdot (alt nokta / dot below)
+    key <AB03> { [         c,          C,     dead_belowdot,     dead_belowdot ] };
+
+    // AltGr+V = dead_abovedot (ust nokta / dot above)
+    key <AB04> { [         v,          V,    dead_abovedot,     dead_abovedot ] };
+
+    // AltGr+B = dead_belowbreve (alt kavis / breve below)
+    key <AB05> { [         b,          B,   dead_belowbreve,  dead_belowbreve ] };
+
+    // === Dogrudan karakter erisimi ===
+
+    // AltGr+N = hamza (ʾ U+02BE)
+    key <AB06> { [         n,          N,             U02BE,            U02BE ] };
+
+    // AltGr+M = ayn (ʿ U+02BF)
+    key <AB07> { [         m,          M,             U02BF,            U02BF ] };
+
+    // AltGr+D = ḏ Ḏ (d with line below)
+    key <AC03> { [         d,          D,             U1E0F,            U1E0E ] };
+
+    // AltGr+G = ġ Ġ (g with dot above)
+    key <AC05> { [         g,          G,             U0121,            U0120 ] };
+
+    // AltGr+H = ḫ Ḫ (h with breve below)
+    key <AC06> { [         h,          H,             U1E2B,            U1E2A ] };
+
+    // AltGr+K = ḳ Ḳ (k with dot below)
+    key <AC08> { [         k,          K,             U1E33,            U1E32 ] };
+
+    // AltGr+S = ṣ Ṣ (s with dot below)
+    key <AC02> { [         s,          S,             U1E63,            U1E62 ] };
+
+    // AltGr+A = ā Ā (a with macron)
+    key <AC01> { [         a,          A,             U0101,            U0100 ] };
+
+    // AltGr+T = ṭ Ṭ (t with dot below)
+    key <AD05> { [         t,          T,             U1E6D,            U1E6C ] };
+
+    // AltGr+U = ū Ū (u with macron)
+    key <AD07> { [         u,          U,             U016B,            U016A ] };
+
+    // AltGr+I = ī Ī (i with macron)
+    key <AD08> { type[group1] = "FOUR_LEVEL_ALPHABETIC",
+                 [  idotless,          I,             U012B,            U012A ] };
+
+    // AltGr+E = ē Ē (e with macron)
+    key <AD03> { [         e,          E,             U0113,            U0112 ] };
+
+    // AltGr+O = ō Ō (o with macron)
+    key <AD09> { [         o,          O,             U014D,            U014C ] };
+
+    include "level3(ralt_switch)"
+};

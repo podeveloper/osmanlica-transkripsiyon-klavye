@@ -1,0 +1,11 @@
+# Ottoman Turkish Transcription - Extra Compose Sequences
+# s with line below (s̱) does not have a precomposed Unicode character,
+# so we define it here using combining macron below (U+0331).
+#
+# Usage: Add this to your ~/.XCompose or run the install script.
+
+include "%L"
+
+# dead_belowmacron + s = s + combining macron below
+<dead_belowmacron> <s>		: "s̱"
+<dead_belowmacron> <S>		: "S̱"

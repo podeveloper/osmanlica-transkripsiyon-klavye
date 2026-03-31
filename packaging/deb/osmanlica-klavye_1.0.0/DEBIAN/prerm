@@ -1,0 +1,47 @@
+#!/bin/bash
+set -e
+
+XKB_SYMBOLS="/usr/share/X11/xkb/symbols/tr"
+EVDEV_XML="/usr/share/X11/xkb/rules/evdev.xml"
+
+# 1. XKB symbols dosyasindan varianti kaldir
+if grep -q 'xkb_symbols "osmanlica"' "$XKB_SYMBOLS"; then
+    python3 -c "
+import re
+with open('$XKB_SYMBOLS', 'r') as f:
+    content = f.read()
+content = re.sub(r'\n*// Ottoman Turkish Transcription.*?^};', '', content, flags=re.DOTALL | re.MULTILINE)
+with open('$XKB_SYMBOLS', 'w') as f:
+    f.write(content)
+"
+fi
+
+# 2. evdev.xml'den kaydi kaldir
+if grep -q "osmanlica" "$EVDEV_XML"; then
+    python3 -c "
+import xml.etree.ElementTree as ET
+tree = ET.parse('$EVDEV_XML')
+root = tree.getroot()
+for layout in root.iter('layout'):
+    config = layout.find('configItem')
+    if config is not None and config.find('name') is not None:
+        if config.find('name').text == 'tr':
+            vl = layout.find('variantList')
+            if vl is not None:
+                for v in vl.findall('variant'):
+                    c = v.find('configItem')
+                    if c is not None:
+                        n = c.find('name')
+                        if n is not None and n.text == 'osmanlica':
+                            vl.remove(v)
+                            break
+            break
+ET.indent(tree, space='  ')
+tree.write('$EVDEV_XML', encoding='UTF-8', xml_declaration=True)
+"
+fi
+
+# Normal klavyeye don
+setxkbmap -layout tr 2>/dev/null || true
+
+echo "Osmanlica Transkripsiyon Klavyesi kaldirildi."

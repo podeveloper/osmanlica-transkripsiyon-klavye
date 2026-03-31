@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
+<!--
+  Ottoman Turkish Transcription Keyboard Layout for macOS
+  Based on Turkish Q layout with Option (⌥) key for transcription marks
+
+  Reference: Original Windows version by Talat Oncu
+    https://www.oncu.com/osmtransklavye/
+
+  Direct mappings (Option + key):
+    ⌥+A = ā   ⌥+D = ḏ   ⌥+E = ē   ⌥+G = ġ   ⌥+H = ḫ
+    ⌥+I = ī   ⌥+K = ḳ   ⌥+O = ō   ⌥+S = ṣ   ⌥+T = ṭ
+    ⌥+U = ū   ⌥+N = ʾ   ⌥+M = ʿ
+
+  Dead keys (Option + key, then letter):
+    ⌥+Z = line below:   d→ḏ  z→ẕ  t→ṯ  s→s̱
+    ⌥+X = macron:        a→ā  u→ū  i→ī  e→ē  o→ō
+    ⌥+C = dot below:    d→ḍ  z→ẓ  k→ḳ  h→ḥ  t→ṭ  s→ṣ
+    ⌥+V = dot above:    g→ġ  z→ż
+    ⌥+B = breve below:  h→ḫ
+-->
+<keyboard group="0" id="-28500" name="Turkish - Ottoman Transcription Q" maxout="2">
+  <layouts>
+    <layout first="0" last="17" modifiers="commonModifiers" mapSet="ANSI" />
+  </layouts>
+
+  <modifierMap id="commonModifiers" defaultIndex="0">
+    <keyMapSelect mapIndex="0">
+      <modifier keys="" />
+    </keyMapSelect>
+    <keyMapSelect mapIndex="1">
+      <modifier keys="anyShift" />
+    </keyMapSelect>
+    <keyMapSelect mapIndex="2">
+      <modifier keys="anyOption" />
+    </keyMapSelect>
+    <keyMapSelect mapIndex="3">
+      <modifier keys="anyShift anyOption" />
+    </keyMapSelect>
+    <keyMapSelect mapIndex="4">
+      <modifier keys="caps" />
+    </keyMapSelect>
+  </modifierMap>
+
+  <keyMapSet id="ANSI">
+    <!-- ======================================== -->
+    <!-- Normal (no modifier) - Turkish Q layout  -->
+    <!-- Keys affected by dead keys use actions   -->
+    <!-- ======================================== -->
+    <keyMap index="0">
+      <key code="0" action="lower_a" />
+      <key code="1" action="lower_s" />
+      <key code="2" action="lower_d" />
+      <key code="3" output="f" />
+      <key code="4" action="lower_h" />
+      <key code="5" action="lower_g" />
+      <key code="6" action="lower_z" />
+      <key code="7" output="x" />
+      <key code="8" output="c" />
+      <key code="9" output="v" />
+      <key code="11" output="b" />
+      <key code="12" output="q" />
+      <key code="13" output="w" />
+      <key code="14" action="lower_e" />
+      <key code="15" output="r" />
+      <key code="16" output="y" />
+      <key code="17" action="lower_t" />
+      <key code="18" output="1" />
+      <key code="19" output="2" />
+      <key code="20" output="3" />
+      <key code="21" output="4" />
+      <key code="22" output="6" />
+      <key code="23" output="5" />
+      <key code="24" output="=" />
+      <key code="25" output="9" />
+      <key code="26" output="7" />
+      <key code="27" output="-" />
+      <key code="28" output="8" />
+      <key code="29" output="0" />
+      <key code="30" output="]" />
+      <key code="31" action="lower_o" />
+      <key code="32" action="lower_u" />
+      <key code="33" output="[" />
+      <key code="34" action="lower_i" />
+      <key code="35" output="p" />
+      <key code="36" output="&#x000D;" />
+      <key code="37" output="l" />
+      <key code="38" output="j" />
+      <key code="39" output="'" />
+      <key code="40" action="lower_k" />
+      <key code="41" output=";" />
+      <key code="42" output="\" />
+      <key code="43" output="," />
+      <key code="44" output="/" />
+      <key code="45" output="n" />
+      <key code="46" output="m" />
+      <key code="47" output="." />
+      <key code="48" output="&#x0009;" />
+      <key code="49" output=" " />
+      <key code="50" output="`" />
+      <key code="51" output="&#x0008;" />
+      <key code="53" output="&#x001B;" />
+      <key code="65" output="." />
+      <key code="67" output="*" />
+      <key code="69" output="+" />
+      <key code="75" output="/" />
+      <key code="76" output="&#x0003;" />
+      <key code="78" output="-" />
+      <key code="81" output="=" />
+      <key code="82" output="0" />
+      <key code="83" output="1" />
+      <key code="84" output="2" />
+      <key code="85" output="3" />
+      <key code="86" output="4" />
+      <key code="87" output="5" />
+      <key code="88" output="6" />
+      <key code="89" output="7" />
+      <key code="91" output="8" />
+      <key code="92" output="9" />
+      <key code="114" output="&#x0005;" />
+      <key code="115" output="&#x0001;" />
+      <key code="116" output="&#x000B;" />
+      <key code="117" output="&#x007F;" />
+      <key code="119" output="&#x0004;" />
+      <key code="121" output="&#x000C;" />
+      <key code="123" output="&#x001C;" />
+      <key code="124" output="&#x001D;" />
+      <key code="125" output="&#x001F;" />
+      <key code="126" output="&#x001E;" />
+    </keyMap>
+
+    <!-- ======================================== -->
+    <!-- Shift                                    -->
+    <!-- ======================================== -->
+    <keyMap index="1">
+      <key code="0" action="upper_A" />
+      <key code="1" action="upper_S" />
+      <key code="2" action="upper_D" />
+      <key code="3" output="F" />
+      <key code="4" action="upper_H" />
+      <key code="5" action="upper_G" />
+      <key code="6" action="upper_Z" />
+      <key code="7" output="X" />
+      <key code="8" output="C" />
+      <key code="9" output="V" />
+      <key code="11" output="B" />
+      <key code="12" output="Q" />
+      <key code="13" output="W" />
+      <key code="14" action="upper_E" />
+      <key code="15" output="R" />
+      <key code="16" output="Y" />
+      <key code="17" action="upper_T" />
+      <key code="18" output="!" />
+      <key code="19" output="'" />
+      <key code="20" output="^" />
+      <key code="21" output="+" />
+      <key code="22" output="&#x0026;" />
+      <key code="23" output="%" />
+      <key code="24" output="?" />
+      <key code="25" output=")" />
+      <key code="26" output="/" />
+      <key code="27" output="_" />
+      <key code="28" output="(" />
+      <key code="29" output="=" />
+      <key code="30" output="}" />
+      <key code="31" action="upper_O" />
+      <key code="32" action="upper_U" />
+      <key code="33" output="{" />
+      <key code="34" action="upper_I" />
+      <key code="35" output="P" />
+      <key code="36" output="&#x000D;" />
+      <key code="37" output="L" />
+      <key code="38" output="J" />
+      <key code="39" output="&#x0022;" />
+      <key code="40" action="upper_K" />
+      <key code="41" output=":" />
+      <key code="42" output="|" />
+      <key code="43" output=";" />
+      <key code="44" output="?" />
+      <key code="45" output="N" />
+      <key code="46" output="M" />
+      <key code="47" output="&#x003E;" />
+      <key code="49" output=" " />
+      <key code="50" output="~" />
+    </keyMap>
+
+    <!-- ======================================== -->
+    <!-- Option (⌥) - Ottoman transcription       -->
+    <!-- ======================================== -->
+    <keyMap index="2">
+      <key code="0" output="&#x0101;" />   <!-- ⌥+A = ā -->
+      <key code="1" output="&#x1E63;" />   <!-- ⌥+S = ṣ -->
+      <key code="2" output="&#x1E0F;" />   <!-- ⌥+D = ḏ -->
+      <key code="3" output="f" />
+      <key code="4" output="&#x1E2B;" />   <!-- ⌥+H = ḫ -->
+      <key code="5" output="&#x0121;" />   <!-- ⌥+G = ġ -->
+      <key code="6" action="deadKeyLineBelow" />    <!-- ⌥+Z -->
+      <key code="7" action="deadKeyMacron" />        <!-- ⌥+X -->
+      <key code="8" action="deadKeyDotBelow" />      <!-- ⌥+C -->
+      <key code="9" action="deadKeyDotAbove" />      <!-- ⌥+V -->
+      <key code="11" action="deadKeyBreveBelow" />   <!-- ⌥+B -->
+      <key code="12" output="q" />
+      <key code="13" output="w" />
+      <key code="14" output="&#x0113;" />  <!-- ⌥+E = ē -->
+      <key code="15" output="r" />
+      <key code="16" output="y" />
+      <key code="17" output="&#x1E6D;" />  <!-- ⌥+T = ṭ -->
+      <key code="31" output="&#x014D;" />  <!-- ⌥+O = ō -->
+      <key code="32" output="&#x016B;" />  <!-- ⌥+U = ū -->
+      <key code="34" output="&#x012B;" />  <!-- ⌥+I = ī -->
+      <key code="35" output="p" />
+      <key code="37" output="l" />
+      <key code="38" output="j" />
+      <key code="40" output="&#x1E33;" />  <!-- ⌥+K = ḳ -->
+      <key code="45" output="&#x02BE;" />  <!-- ⌥+N = ʾ (hamza) -->
+      <key code="46" output="&#x02BF;" />  <!-- ⌥+M = ʿ (ayn) -->
+      <key code="49" output=" " />
+    </keyMap>
+
+    <!-- ======================================== -->
+    <!-- Shift+Option (⇧⌥) - Uppercase Ottoman   -->
+    <!-- ======================================== -->
+    <keyMap index="3">
+      <key code="0" output="&#x0100;" />   <!-- ⇧⌥+A = Ā -->
+      <key code="1" output="&#x1E62;" />   <!-- ⇧⌥+S = Ṣ -->
+      <key code="2" output="&#x1E0E;" />   <!-- ⇧⌥+D = Ḏ -->
+      <key code="3" output="F" />
+      <key code="4" output="&#x1E2A;" />   <!-- ⇧⌥+H = Ḫ -->
+      <key code="5" output="&#x0120;" />   <!-- ⇧⌥+G = Ġ -->
+      <key code="6" action="deadKeyLineBelow" />
+      <key code="7" action="deadKeyMacron" />
+      <key code="8" action="deadKeyDotBelow" />
+      <key code="9" action="deadKeyDotAbove" />
+      <key code="11" action="deadKeyBreveBelow" />
+      <key code="12" output="Q" />
+      <key code="13" output="W" />
+      <key code="14" output="&#x0112;" />  <!-- ⇧⌥+E = Ē -->
+      <key code="15" output="R" />
+      <key code="16" output="Y" />
+      <key code="17" output="&#x1E6C;" />  <!-- ⇧⌥+T = Ṭ -->
+      <key code="31" output="&#x014C;" />  <!-- ⇧⌥+O = Ō -->
+      <key code="32" output="&#x016A;" />  <!-- ⇧⌥+U = Ū -->
+      <key code="34" output="&#x012A;" />  <!-- ⇧⌥+I = Ī -->
+      <key code="35" output="P" />
+      <key code="37" output="L" />
+      <key code="38" output="J" />
+      <key code="40" output="&#x1E32;" />  <!-- ⇧⌥+K = Ḳ -->
+      <key code="45" output="&#x02BE;" />  <!-- ⇧⌥+N = ʾ -->
+      <key code="46" output="&#x02BF;" />  <!-- ⇧⌥+M = ʿ -->
+      <key code="49" output=" " />
+    </keyMap>
+
+    <!-- ======================================== -->
+    <!-- Caps Lock                                -->
+    <!-- ======================================== -->
+    <keyMap index="4">
+      <key code="0" action="upper_A" />
+      <key code="1" action="upper_S" />
+      <key code="2" action="upper_D" />
+      <key code="3" output="F" />
+      <key code="4" action="upper_H" />
+      <key code="5" action="upper_G" />
+      <key code="6" action="upper_Z" />
+      <key code="7" output="X" />
+      <key code="8" output="C" />
+      <key code="9" output="V" />
+      <key code="11" output="B" />
+      <key code="12" output="Q" />
+      <key code="13" output="W" />
+      <key code="14" action="upper_E" />
+      <key code="15" output="R" />
+      <key code="16" output="Y" />
+      <key code="17" action="upper_T" />
+      <key code="31" action="upper_O" />
+      <key code="32" action="upper_U" />
+      <key code="34" action="upper_I" />
+      <key code="35" output="P" />
+      <key code="37" output="L" />
+      <key code="38" output="J" />
+      <key code="40" action="upper_K" />
+      <key code="45" output="N" />
+      <key code="46" output="M" />
+      <key code="49" output=" " />
+    </keyMap>
+  </keyMapSet>
+
+  <!-- ======================================== -->
+  <!-- Actions: dead key triggers + state-aware -->
+  <!-- ======================================== -->
+  <actions>
+    <!-- Dead key activation actions -->
+    <action id="deadKeyLineBelow">
+      <when state="none" next="stateLineBelow" />
+    </action>
+    <action id="deadKeyMacron">
+      <when state="none" next="stateMacron" />
+    </action>
+    <action id="deadKeyDotBelow">
+      <when state="none" next="stateDotBelow" />
+    </action>
+    <action id="deadKeyDotAbove">
+      <when state="none" next="stateDotAbove" />
+    </action>
+    <action id="deadKeyBreveBelow">
+      <when state="none" next="stateBreveBelow" />
+    </action>
+
+    <!-- Lowercase letter actions with dead key state responses -->
+
+    <!-- a: macron → ā -->
+    <action id="lower_a">
+      <when state="none" output="a" />
+      <when state="stateMacron" output="&#x0101;" />
+      <when state="stateLineBelow" output="a" />
+      <when state="stateDotBelow" output="a" />
+      <when state="stateDotAbove" output="a" />
+      <when state="stateBreveBelow" output="a" />
+    </action>
+
+    <!-- s: lineBelow → s̱, dotBelow → ṣ -->
+    <action id="lower_s">
+      <when state="none" output="s" />
+      <when state="stateLineBelow" output="s&#x0331;" />
+      <when state="stateDotBelow" output="&#x1E63;" />
+      <when state="stateMacron" output="s" />
+      <when state="stateDotAbove" output="s" />
+      <when state="stateBreveBelow" output="s" />
+    </action>
+
+    <!-- d: lineBelow → ḏ, dotBelow → ḍ -->
+    <action id="lower_d">
+      <when state="none" output="d" />
+      <when state="stateLineBelow" output="&#x1E0F;" />
+      <when state="stateDotBelow" output="&#x1E0D;" />
+      <when state="stateMacron" output="d" />
+      <when state="stateDotAbove" output="d" />
+      <when state="stateBreveBelow" output="d" />
+    </action>
+
+    <!-- g: dotAbove → ġ -->
+    <action id="lower_g">
+      <when state="none" output="g" />
+      <when state="stateDotAbove" output="&#x0121;" />
+      <when state="stateLineBelow" output="g" />
+      <when state="stateMacron" output="g" />
+      <when state="stateDotBelow" output="g" />
+      <when state="stateBreveBelow" output="g" />
+    </action>
+
+    <!-- h: dotBelow → ḥ, breveBelow → ḫ -->
+    <action id="lower_h">
+      <when state="none" output="h" />
+      <when state="stateDotBelow" output="&#x1E25;" />
+      <when state="stateBreveBelow" output="&#x1E2B;" />
+      <when state="stateLineBelow" output="h" />
+      <when state="stateMacron" output="h" />
+      <when state="stateDotAbove" output="h" />
+    </action>
+
+    <!-- z: lineBelow → ẕ, dotBelow → ẓ, dotAbove → ż -->
+    <action id="lower_z">
+      <when state="none" output="z" />
+      <when state="stateLineBelow" output="&#x1E95;" />
+      <when state="stateDotBelow" output="&#x1E93;" />
+      <when state="stateDotAbove" output="&#x017C;" />
+      <when state="stateMacron" output="z" />
+      <when state="stateBreveBelow" output="z" />
+    </action>
+
+    <!-- e: macron → ē -->
+    <action id="lower_e">
+      <when state="none" output="e" />
+      <when state="stateMacron" output="&#x0113;" />
+      <when state="stateLineBelow" output="e" />
+      <when state="stateDotBelow" output="e" />
+      <when state="stateDotAbove" output="e" />
+      <when state="stateBreveBelow" output="e" />
+    </action>
+
+    <!-- t: lineBelow → ṯ, dotBelow → ṭ -->
+    <action id="lower_t">
+      <when state="none" output="t" />
+      <when state="stateLineBelow" output="&#x1E6F;" />
+      <when state="stateDotBelow" output="&#x1E6D;" />
+      <when state="stateMacron" output="t" />
+      <when state="stateDotAbove" output="t" />
+      <when state="stateBreveBelow" output="t" />
+    </action>
+
+    <!-- o: macron → ō -->
+    <action id="lower_o">
+      <when state="none" output="o" />
+      <when state="stateMacron" output="&#x014D;" />
+      <when state="stateLineBelow" output="o" />
+      <when state="stateDotBelow" output="o" />
+      <when state="stateDotAbove" output="o" />
+      <when state="stateBreveBelow" output="o" />
+    </action>
+
+    <!-- u: macron → ū -->
+    <action id="lower_u">
+      <when state="none" output="u" />
+      <when state="stateMacron" output="&#x016B;" />
+      <when state="stateLineBelow" output="u" />
+      <when state="stateDotBelow" output="u" />
+      <when state="stateDotAbove" output="u" />
+      <when state="stateBreveBelow" output="u" />
+    </action>
+
+    <!-- i (ı on Turkish Q): macron → ī -->
+    <action id="lower_i">
+      <when state="none" output="&#x0131;" />
+      <when state="stateMacron" output="&#x012B;" />
+      <when state="stateLineBelow" output="&#x0131;" />
+      <when state="stateDotBelow" output="&#x0131;" />
+      <when state="stateDotAbove" output="&#x0131;" />
+      <when state="stateBreveBelow" output="&#x0131;" />
+    </action>
+
+    <!-- k: dotBelow → ḳ -->
+    <action id="lower_k">
+      <when state="none" output="k" />
+      <when state="stateDotBelow" output="&#x1E33;" />
+      <when state="stateLineBelow" output="k" />
+      <when state="stateMacron" output="k" />
+      <when state="stateDotAbove" output="k" />
+      <when state="stateBreveBelow" output="k" />
+    </action>
+
+    <!-- Uppercase letter actions with dead key state responses -->
+
+    <!-- A: macron → Ā -->
+    <action id="upper_A">
+      <when state="none" output="A" />
+      <when state="stateMacron" output="&#x0100;" />
+      <when state="stateLineBelow" output="A" />
+      <when state="stateDotBelow" output="A" />
+      <when state="stateDotAbove" output="A" />
+      <when state="stateBreveBelow" output="A" />
+    </action>
+
+    <!-- S: lineBelow → S̱, dotBelow → Ṣ -->
+    <action id="upper_S">
+      <when state="none" output="S" />
+      <when state="stateLineBelow" output="S&#x0331;" />
+      <when state="stateDotBelow" output="&#x1E62;" />
+      <when state="stateMacron" output="S" />
+      <when state="stateDotAbove" output="S" />
+      <when state="stateBreveBelow" output="S" />
+    </action>
+
+    <!-- D: lineBelow → Ḏ, dotBelow → Ḍ -->
+    <action id="upper_D">
+      <when state="none" output="D" />
+      <when state="stateLineBelow" output="&#x1E0E;" />
+      <when state="stateDotBelow" output="&#x1E0C;" />
+      <when state="stateMacron" output="D" />
+      <when state="stateDotAbove" output="D" />
+      <when state="stateBreveBelow" output="D" />
+    </action>
+
+    <!-- G: dotAbove → Ġ -->
+    <action id="upper_G">
+      <when state="none" output="G" />
+      <when state="stateDotAbove" output="&#x0120;" />
+      <when state="stateLineBelow" output="G" />
+      <when state="stateMacron" output="G" />
+      <when state="stateDotBelow" output="G" />
+      <when state="stateBreveBelow" output="G" />
+    </action>
+
+    <!-- H: dotBelow → Ḥ, breveBelow → Ḫ -->
+    <action id="upper_H">
+      <when state="none" output="H" />
+      <when state="stateDotBelow" output="&#x1E24;" />
+      <when state="stateBreveBelow" output="&#x1E2A;" />
+      <when state="stateLineBelow" output="H" />
+      <when state="stateMacron" output="H" />
+      <when state="stateDotAbove" output="H" />
+    </action>
+
+    <!-- Z: lineBelow → Ẕ, dotBelow → Ẓ, dotAbove → Ż -->
+    <action id="upper_Z">
+      <when state="none" output="Z" />
+      <when state="stateLineBelow" output="&#x1E94;" />
+      <when state="stateDotBelow" output="&#x1E92;" />
+      <when state="stateDotAbove" output="&#x017B;" />
+      <when state="stateMacron" output="Z" />
+      <when state="stateBreveBelow" output="Z" />
+    </action>
+
+    <!-- E: macron → Ē -->
+    <action id="upper_E">
+      <when state="none" output="E" />
+      <when state="stateMacron" output="&#x0112;" />
+      <when state="stateLineBelow" output="E" />
+      <when state="stateDotBelow" output="E" />
+      <when state="stateDotAbove" output="E" />
+      <when state="stateBreveBelow" output="E" />
+    </action>
+
+    <!-- T: lineBelow → Ṯ, dotBelow → Ṭ -->
+    <action id="upper_T">
+      <when state="none" output="T" />
+      <when state="stateLineBelow" output="&#x1E6E;" />
+      <when state="stateDotBelow" output="&#x1E6C;" />
+      <when state="stateMacron" output="T" />
+      <when state="stateDotAbove" output="T" />
+      <when state="stateBreveBelow" output="T" />
+    </action>
+
+    <!-- O: macron → Ō -->
+    <action id="upper_O">
+      <when state="none" output="O" />
+      <when state="stateMacron" output="&#x014C;" />
+      <when state="stateLineBelow" output="O" />
+      <when state="stateDotBelow" output="O" />
+      <when state="stateDotAbove" output="O" />
+      <when state="stateBreveBelow" output="O" />
+    </action>
+
+    <!-- U: macron → Ū -->
+    <action id="upper_U">
+      <when state="none" output="U" />
+      <when state="stateMacron" output="&#x016A;" />
+      <when state="stateLineBelow" output="U" />
+      <when state="stateDotBelow" output="U" />
+      <when state="stateDotAbove" output="U" />
+      <when state="stateBreveBelow" output="U" />
+    </action>
+
+    <!-- I: macron → Ī -->
+    <action id="upper_I">
+      <when state="none" output="I" />
+      <when state="stateMacron" output="&#x012A;" />
+      <when state="stateLineBelow" output="I" />
+      <when state="stateDotBelow" output="I" />
+      <when state="stateDotAbove" output="I" />
+      <when state="stateBreveBelow" output="I" />
+    </action>
+
+    <!-- K: dotBelow → Ḳ -->
+    <action id="upper_K">
+      <when state="none" output="K" />
+      <when state="stateDotBelow" output="&#x1E32;" />
+      <when state="stateLineBelow" output="K" />
+      <when state="stateMacron" output="K" />
+      <when state="stateDotAbove" output="K" />
+      <when state="stateBreveBelow" output="K" />
+    </action>
+  </actions>
+
+  <!-- ======================================== -->
+  <!-- Terminators: fallback when dead key +    -->
+  <!-- unrecognized key is pressed              -->
+  <!-- ======================================== -->
+  <terminators>
+    <when state="stateLineBelow" output="&#x0331;" />
+    <when state="stateMacron" output="&#x0304;" />
+    <when state="stateDotBelow" output="&#x0323;" />
+    <when state="stateDotAbove" output="&#x0307;" />
+    <when state="stateBreveBelow" output="&#x032E;" />
+  </terminators>
+
+</keyboard>

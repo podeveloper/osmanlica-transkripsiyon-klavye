@@ -1,0 +1,85 @@
+#!/bin/bash
+set -e
+
+XKB_SYMBOLS="/usr/share/X11/xkb/symbols/tr"
+EVDEV_XML="/usr/share/X11/xkb/rules/evdev.xml"
+VARIANT_FILE="/usr/share/X11/xkb/symbols/tr_osmanlica_snippet"
+XCOMPOSE_SRC="/usr/share/doc/osmanlica-klavye/XCompose_osmanlica"
+
+# python3 kontrolu
+if ! command -v python3 &>/dev/null; then
+    echo "HATA: python3 bulunamadi. Lutfen python3 yukleyin: sudo apt install python3"
+    exit 1
+fi
+
+# 1. XKB symbols dosyasina varianti ekle
+if ! grep -q 'xkb_symbols "osmanlica"' "$XKB_SYMBOLS"; then
+    echo "" >> "$XKB_SYMBOLS"
+    cat "$VARIANT_FILE" >> "$XKB_SYMBOLS"
+fi
+
+# 2. evdev.xml'e kayit ekle
+if ! grep -q "osmanlica" "$EVDEV_XML"; then
+    python3 -c "
+import xml.etree.ElementTree as ET
+tree = ET.parse('$EVDEV_XML')
+root = tree.getroot()
+for layout in root.iter('layout'):
+    config = layout.find('configItem')
+    if config is not None and config.find('name') is not None:
+        if config.find('name').text == 'tr':
+            vl = layout.find('variantList')
+            if vl is None:
+                vl = ET.SubElement(layout, 'variantList')
+            v = ET.SubElement(vl, 'variant')
+            c = ET.SubElement(v, 'configItem')
+            n = ET.SubElement(c, 'name')
+            n.text = 'osmanlica'
+            d = ET.SubElement(c, 'description')
+            d.text = 'Turkish (Ottoman Transcription Q)'
+            s = ET.SubElement(c, 'shortDescription')
+            s.text = 'tr'
+            break
+ET.indent(tree, space='  ')
+tree.write('$EVDEV_XML', encoding='UTF-8', xml_declaration=True)
+"
+fi
+
+# 3. XCompose dosyasini kullanicinin HOME dizinine kur (s̱ icin gerekli)
+if [ -n "$SUDO_USER" ]; then
+    TARGET_HOME=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+    TARGET_USER="$SUDO_USER"
+else
+    TARGET_HOME="$HOME"
+    TARGET_USER=$(whoami)
+fi
+XCOMPOSE="$TARGET_HOME/.XCompose"
+
+if [ -f "$XCOMPOSE_SRC" ]; then
+    if [ -f "$XCOMPOSE" ]; then
+        if ! grep -q "Ottoman Turkish" "$XCOMPOSE"; then
+            cat "$XCOMPOSE_SRC" >> "$XCOMPOSE"
+            chown "$TARGET_USER:$TARGET_USER" "$XCOMPOSE"
+        fi
+    else
+        cp "$XCOMPOSE_SRC" "$XCOMPOSE"
+        chown "$TARGET_USER:$TARGET_USER" "$XCOMPOSE"
+    fi
+fi
+
+echo ""
+echo "============================================="
+echo "  Osmanlica Transkripsiyon Klavyesi kuruldu!"
+echo "============================================="
+echo ""
+echo "Etkinlestirmek icin asagidakilerden birini yapin:"
+echo ""
+echo "  1) Terminal ile (gecici):"
+echo "     setxkbmap -layout tr -variant osmanlica"
+echo ""
+echo "  2) Kalici (GNOME):"
+echo "     Ayarlar > Klavye > Giris Kaynaklari > '+' > 'Turkish (Ottoman Transcription Q)'"
+echo ""
+echo "  3) Kalici (KDE):"
+echo "     Sistem Ayarlari > Giris Aygitlari > Klavye > Duzenler > Duzeni Ekle > Variant: Ottoman"
+echo ""
