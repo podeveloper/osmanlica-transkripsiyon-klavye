@@ -1,0 +1,30 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Origin: osmanlica-transkripsiyon-klavye
+Label: Osmanlica Transkripsiyon Klavye
+Suite: stable
+Codename: stable
+Architectures: all
+Components: main
+Description: Osmanlica Transkripsiyon Klavye Duzeni APT Deposu
+SHA256:
+ 1194115c3930f175c94914f0bf7a1688311e42eaa1e306778af46a8a8f1524ef      872 main/binary-all/Packages
+ 5399168cd6ae8063e55b139f3ad576564bed696501b6ff67a60d2393f0db1e03      586 main/binary-all/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iQJPBAEBCgA5FiEE2/isRv3VVefpiBGyZTC0V5nCCIsFAmnLrmEbHHlhc2lua29y
+a21hei5kZXZAZ21haWwuY29tAAoJEGUwtFeZwgiLtm8P/jTn2wLYjQM5+I6I+rKg
+RAwcPsFiOAWubSl0jQ7hfJlMSLbjhAf08LoO5IFpV/+FZp9H8esKH1YhfmEKx3w/
+R5/pw+Uei4PK6kt+u9h99yne7Uh1xgmPWNvUWqsfX/O42CbY/iKJtIVstd+pRfhb
+bDp9cZJ6AZRxUsQIjOudzTtn8CZY/pGIxNNcF0xfN/Ov82CpBCUfF4XDZrZUmG6n
+E0hFNygRIxEkROKCiL3WkGdtCCurkiAH5TPgL2mFPprH/HYJIDwEhJaZBqyPchM7
+s3mtGurIJOUGyxM2ay2vXFUo18x4TN4vvc1VOlIsqBR1oQJnQhFBZulwgCvsZ/6/
+pF99nnZDnIemh38dMUw3ryo8WlyJtykMYtowfGKk969NPXBsBB8XIok+D+rGK2wE
+T3tAIKXneC3gJXq3aV/CRjNNbIIqzXYXLsC4xdakSudbIGZsQ07rOyA6a8VzmCr8
+R5RnkrAMGdUIn09rTD4ppFACNK7lUYbLZt68FyetwQW2tsilQWgarQ47QbTt9KkD
+4OsC69i83rEvvLAULi6MPPRBvCd1Fose0rUADhC/dy6KIMGihNairR/0YAdUwoI8
+pq9aF0qPV34fgxOnrhbgHaQOWV3fRPebY3m491WkF4uHueXbNYwUUyJY2plLyXF6
+qRUbWwS1sIskYxDhbI7SMQ/s
+=tAKP
+-----END PGP SIGNATURE-----

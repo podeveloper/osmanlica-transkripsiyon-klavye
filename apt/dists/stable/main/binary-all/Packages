@@ -1,0 +1,22 @@
+Package: osmanlica-klavye
+Version: 1.0.0
+Architecture: all
+Maintainer: Yasin Korkmaz <yasinkorkmaz.dev@gmail.com>
+Pre-Depends: python3
+Depends: xkb-data
+Filename: pool/main/osmanlica-klavye_1.0.0.deb
+Size: 4312
+MD5sum: 888c8bfa107adaafc13fde39d02af7e8
+SHA1: 81a3413250578053f140e0e9b4ef65ab12f3a558
+SHA256: acafa3dea7a3978d117125fd045d78a66b10b1c05a623065fb5cedc64d6f9f2f
+Section: utils
+Priority: optional
+Homepage: https://github.com/podeveloper/osmanlica-transkripsiyon-klavye
+Description: Ottoman Turkish Transcription Keyboard Layout
+ Osmanli Turkcesi transkripsiyon isaretlerini (d with line below, a with
+ macron, s with dot below, g with dot above, h with breve below, hamza,
+ ayn vb.) kolayca yazmak icin Turkce Q tabanli klavye duzeni.
+ .
+ AltGr tusu ile transkripsiyon karakterlerine dogrudan erisim saglar.
+ Talat Oncu'nun Windows surumunden ilham alinmistir.
+
