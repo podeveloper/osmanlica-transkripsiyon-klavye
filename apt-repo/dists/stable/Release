@@ -1,0 +1,10 @@
+Origin: osmanlica-transkripsiyon-klavye
+Label: Osmanlica Transkripsiyon Klavye
+Suite: stable
+Codename: stable
+Architectures: all
+Components: main
+Description: Osmanlica Transkripsiyon Klavye Duzeni APT Deposu
+SHA256:
+ 1194115c3930f175c94914f0bf7a1688311e42eaa1e306778af46a8a8f1524ef      872 main/binary-all/Packages
+ 5399168cd6ae8063e55b139f3ad576564bed696501b6ff67a60d2393f0db1e03      586 main/binary-all/Packages.gz

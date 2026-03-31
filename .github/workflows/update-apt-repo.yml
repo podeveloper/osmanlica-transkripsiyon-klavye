@@ -1,0 +1,72 @@
+name: Update APT Repository
+
+on:
+  workflow_run:
+    workflows: ["Build & Release"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  update-repo:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Import GPG key
+        run: echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
+
+      - name: Download latest .deb from release
+        run: |
+          mkdir -p apt-repo/pool/main
+          gh release download --pattern "*.deb" --dir apt-repo/pool/main --clobber
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build APT repo metadata
+        run: |
+          cd apt-repo
+          mkdir -p dists/stable/main/binary-all
+
+          dpkg-scanpackages pool/main /dev/null > dists/stable/main/binary-all/Packages
+          gzip -k -f dists/stable/main/binary-all/Packages
+
+          # Release dosyasi
+          cat > dists/stable/Release << 'RELEASE'
+          Origin: osmanlica-transkripsiyon-klavye
+          Label: Osmanlica Transkripsiyon Klavye
+          Suite: stable
+          Codename: stable
+          Architectures: all
+          Components: main
+          Description: Osmanlica Transkripsiyon Klavye Duzeni APT Deposu
+          RELEASE
+          sed -i 's/^          //' dists/stable/Release
+
+          # SHA256 hash ekle
+          {
+            cat dists/stable/Release
+            echo "SHA256:"
+            for f in dists/stable/main/binary-all/Packages dists/stable/main/binary-all/Packages.gz; do
+              SIZE=$(wc -c < "$f")
+              HASH=$(sha256sum "$f" | cut -d' ' -f1)
+              REL_PATH=$(echo "$f" | sed 's|dists/stable/||')
+              printf " %s %8d %s\n" "$HASH" "$SIZE" "$REL_PATH"
+            done
+          } > dists/stable/Release.tmp
+          mv dists/stable/Release.tmp dists/stable/Release
+
+          # İmzala
+          gpg --default-key yasinkorkmaz.dev@gmail.com -abs -o dists/stable/Release.gpg dists/stable/Release
+          gpg --default-key yasinkorkmaz.dev@gmail.com --clearsign -o dists/stable/InRelease dists/stable/Release
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./apt-repo
+          destination_dir: apt

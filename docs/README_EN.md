@@ -58,10 +58,20 @@ Download the installer from [Releases](https://github.com/podeveloper/osmanlica-
 
 ### Linux (Ubuntu / Debian)
 
+**Option 1 — Terminal (one-liner):**
+```bash
+curl -fsSL https://podeveloper.github.io/osmanlica-transkripsiyon-klavye/apt/apt-repo-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/osmanlica-klavye.gpg
+echo "deb [signed-by=/usr/share/keyrings/osmanlica-klavye.gpg] https://podeveloper.github.io/osmanlica-transkripsiyon-klavye/apt stable main" | sudo tee /etc/apt/sources.list.d/osmanlica-klavye.list
+sudo apt update
+sudo apt install osmanlica-klavye
+```
+
+**Option 2 — .deb file:**
 1. Download the `.deb` file from [Releases](https://github.com/podeveloper/osmanlica-transkripsiyon-klavye/releases/latest)
 2. **Double-click** the file and click "Install"
    - Or via terminal: `sudo dpkg -i osmanlica-klavye_*.deb`
-3. Enable the layout:
+
+Then enable the layout:
 
 **GNOME (Ubuntu default):**
 - Settings → Keyboard → Input Sources → **+** → Under "Turkish" select **"Turkish (Ottoman Transcription Q)"**
