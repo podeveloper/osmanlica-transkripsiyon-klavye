@@ -87,6 +87,27 @@ To uninstall: `sudo apt remove osmanlica-klavye`
 
 > On macOS, use the **Option (⌥)** key instead of AltGr. It's located next to the Command key.
 
+<details>
+<summary><strong>⚠️ Getting "unidentified developer" warning on macOS?</strong></summary>
+
+macOS may block unsigned packages. Two ways to fix this:
+
+**Option 1 — Right-click to open:**
+- **Right-click** (or Control-click) the `.pkg` file → **Open** → Click **Open** again on the warning dialog
+
+**Option 2 — Install via Terminal:**
+```bash
+# Remove quarantine flag
+xattr -d com.apple.quarantine ~/Downloads/OsmanlicaTranskripsiyon-1.0.0.pkg
+
+# Install
+sudo installer -pkg ~/Downloads/OsmanlicaTranskripsiyon-1.0.0.pkg -target /
+```
+
+Both methods are safe — the file only contains a keyboard layout and does not modify system files.
+
+</details>
+
 ## Verify Installation
 
 1. Open any text editor (LibreOffice Writer, TextEdit, Notes, etc.)

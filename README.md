@@ -89,6 +89,27 @@ Kaldırmak için: `sudo apt remove osmanlica-klavye`
 
 > macOS'ta AltGr yerine **Option (⌥)** tuşu kullanılır. Option tuşu klavyenin sol alt kısmında, Command tuşunun yanındadır.
 
+<details>
+<summary><strong>⚠️ macOS "Geliştirici doğrulanamadı" uyarısı alıyorsanız</strong></summary>
+
+macOS, imzalanmamış paketleri engelleyebilir. Bu durumda iki yol var:
+
+**Yol 1 — Sağ tık ile açma:**
+- `.pkg` dosyasına **sağ tıklayın** (veya Control tuşuna basılı tutarak tıklayın) → **Aç** → Uyarı çıkınca tekrar **Aç**
+
+**Yol 2 — Terminal ile kurulum:**
+```bash
+# Karantina işaretini kaldır
+xattr -d com.apple.quarantine ~/Downloads/OsmanlicaTranskripsiyon-1.0.0.pkg
+
+# Kur
+sudo installer -pkg ~/Downloads/OsmanlicaTranskripsiyon-1.0.0.pkg -target /
+```
+
+Her iki yöntem de güvenlidir — dosya sadece bir klavye düzeni içerir, sistem dosyalarına müdahale etmez.
+
+</details>
+
 ## Kurulumu Doğrulama
 
 Kurulumdan sonra düzgün çalışıp çalışmadığını test edin:
